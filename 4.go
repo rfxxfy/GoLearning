@@ -10,3 +10,7 @@ func get_max(x int, y int, z int) int {
 	}
 	return ans
 }
+
+/*func get_max(x int, y int, z int) int {
+	return max(x, y, z)
+}*/
