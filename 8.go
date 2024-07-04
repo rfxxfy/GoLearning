@@ -1,7 +1,8 @@
 func reverse(x string) string {
+	a := []rune(x)
 	var res string
-	for i := len(x) - 1; i >= 0; i-- {
-		res += string(x[i])
+	for _, elem := range a {
+		res = string(elem) + res
 	}
 	return res
 }
