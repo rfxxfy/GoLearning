@@ -1,7 +1,7 @@
 package main
 
 import (
-	"awesomeProject/accounts/dto"
+	dto2 "awesomeProject/hw2/accounts/dto"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -103,7 +103,7 @@ func get(cmd Command) error {
 		return fmt.Errorf("resp error %s", string(body))
 	}
 
-	var response dto.GetAccountResponse
+	var response dto2.GetAccountResponse
 	if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
 		return fmt.Errorf("json decode failed: %w", err)
 	}
@@ -113,7 +113,7 @@ func get(cmd Command) error {
 }
 
 func create(cmd Command) error {
-	request := dto.CreateAccountRequest{
+	request := dto2.CreateAccountRequest{
 		Name:   cmd.Name,
 		Amount: cmd.Amount,
 	}
@@ -146,7 +146,7 @@ func create(cmd Command) error {
 }
 
 func delete(cmd Command) error {
-	request := dto.DeleteAccountRequest{
+	request := dto2.DeleteAccountRequest{
 		Name: cmd.Name,
 	}
 	data, err := json.Marshal(request)
@@ -177,7 +177,7 @@ func delete(cmd Command) error {
 }
 
 func changeName(cmd Command) error {
-	request := dto.ChangeAccountRequest{
+	request := dto2.ChangeAccountRequest{
 		Name:    cmd.Name,
 		NewName: cmd.NewName,
 	}
@@ -209,7 +209,7 @@ func changeName(cmd Command) error {
 }
 
 func replenishment(cmd Command) error {
-	request := dto.ChangeAccountRequest{
+	request := dto2.ChangeAccountRequest{
 		Name:   cmd.Name,
 		Amount: cmd.Amount,
 	}
@@ -241,7 +241,7 @@ func replenishment(cmd Command) error {
 }
 
 func withdrawal(cmd Command) error {
-	request := dto.ChangeAccountRequest{
+	request := dto2.ChangeAccountRequest{
 		Name:   cmd.Name,
 		Amount: -cmd.Amount,
 	}
@@ -273,7 +273,7 @@ func withdrawal(cmd Command) error {
 }
 
 func transaction(cmd Command) error {
-	request := dto.ChangeAccountRequest{
+	request := dto2.ChangeAccountRequest{
 		Name:   cmd.Name,
 		Amount: cmd.Amount,
 		To:     cmd.To,

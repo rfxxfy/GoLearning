@@ -1,9 +1,8 @@
 package accounts
 
 import (
-	"awesomeProject/accounts/dto"
-	"awesomeProject/accounts/models"
-	"github.com/labstack/echo/v4"
+	dto2 "awesomeProject/hw2/accounts/dto"
+	"awesomeProject/hw2/accounts/models"
 	"net/http"
 	"sync"
 )
@@ -21,7 +20,7 @@ type Handler struct {
 }
 
 func (h *Handler) CreateAccount(c echo.Context) error {
-	var request dto.ChangeAccountRequest // {"name": "alice", "amount": 50}
+	var request dto2.ChangeAccountRequest // {"name": "alice", "amount": 50}
 	if err := c.Bind(&request); err != nil {
 		c.Logger().Error(err)
 
@@ -63,7 +62,7 @@ func (h *Handler) GetAccount(c echo.Context) error {
 		return c.String(http.StatusNotFound, "account not found")
 	}
 
-	response := dto.GetAccountResponse{
+	response := dto2.GetAccountResponse{
 		Name:   account.Name,
 		Amount: account.Amount,
 	}
@@ -72,7 +71,7 @@ func (h *Handler) GetAccount(c echo.Context) error {
 }
 
 func (h *Handler) DeleteAccount(c echo.Context) error {
-	var request dto.DeleteAccountRequest
+	var request dto2.DeleteAccountRequest
 	if err := c.Bind(&request); err != nil {
 		c.Logger().Error(err)
 		return c.String(http.StatusBadRequest, "invalid request")
@@ -90,7 +89,7 @@ func (h *Handler) DeleteAccount(c echo.Context) error {
 }
 
 func (h *Handler) ChangeAmount(c echo.Context) error {
-	var request dto.ChangeAccountRequest
+	var request dto2.ChangeAccountRequest
 	if err := c.Bind(&request); err != nil {
 		c.Logger().Error(err)
 		return c.String(http.StatusBadRequest, "invalid request")
@@ -117,7 +116,7 @@ func (h *Handler) ChangeAmount(c echo.Context) error {
 }
 
 func (h *Handler) ChangeAccount(c echo.Context) error {
-	var request dto.ChangeAccountRequest
+	var request dto2.ChangeAccountRequest
 	if err := c.Bind(&request); err != nil {
 		c.Logger().Error(err)
 		return c.String(http.StatusBadRequest, "invalid request")
@@ -146,7 +145,7 @@ func (h *Handler) ChangeAccount(c echo.Context) error {
 }
 
 func (h *Handler) MoneyTransaction(c echo.Context) error {
-	var request dto.ChangeAccountRequest
+	var request dto2.ChangeAccountRequest
 	if err := c.Bind(&request); err != nil {
 		c.Logger().Error(err)
 		return c.String(http.StatusBadRequest, "invalid request")
