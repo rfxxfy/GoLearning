@@ -1,7 +1,8 @@
 package main
 
 import (
-	"awesomeProject/hw2/accounts"
+	"awesomeProject/accounts"
+	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 

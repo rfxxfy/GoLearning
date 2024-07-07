@@ -1,7 +1,7 @@
 package main
 
 import (
-	dto2 "awesomeProject/hw2/accounts/dto"
+	dto2 "awesomeProject/accounts/dto"
 	"bytes"
 	"encoding/json"
 	"flag"

@@ -1,8 +1,9 @@
 package accounts
 
 import (
-	dto2 "awesomeProject/hw2/accounts/dto"
-	"awesomeProject/hw2/accounts/models"
+	dto2 "awesomeProject/accounts/dto"
+	"awesomeProject/accounts/models"
+	"github.com/labstack/echo/v4"
 	"net/http"
 	"sync"
 )
