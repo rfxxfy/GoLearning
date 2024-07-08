@@ -154,13 +154,16 @@ func delete(cmd Command) error {
 		return fmt.Errorf("json marshal failed: %w", err)
 	}
 
-	resp, err := http.Post(
-		fmt.Sprintf("http://%s:%d/account/delete", cmd.Host, cmd.Port),
-		"application/json",
-		bytes.NewReader(data),
-	)
+	req, err := http.NewRequest("DELETE", fmt.Sprintf("http://%s:%d/account/delete", cmd.Host, cmd.Port), bytes.NewReader(data))
 	if err != nil {
-		return fmt.Errorf("http post failed: %w", err)
+		return fmt.Errorf("create request failed: %w", err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("http request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
