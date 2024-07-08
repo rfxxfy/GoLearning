@@ -18,7 +18,7 @@ func main() {
 
 	e.GET("/account", accountsHandler.GetAccount)
 	e.POST("/account/create", accountsHandler.CreateAccount)
-	e.POST("/account/delete", accountsHandler.DeleteAccount)
+	e.DELETE("/account/delete", accountsHandler.DeleteAccount)
 	e.POST("/account/amount", accountsHandler.ChangeAmount)
 	e.POST("/account/name", accountsHandler.ChangeAccount)
 	e.POST("/account/transaction", accountsHandler.MoneyTransaction)
